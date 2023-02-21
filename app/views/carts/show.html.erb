@@ -25,28 +25,21 @@
             TOTAL:
           </th>
           <th>
-            <%= cart_subtotal_cents / 100.0 %>
+            <%= humanized_money_with_symbol cart_subtotal_cents / 100.0 %>
           </th>
         </tr>
       </tfoot>
     </table>
   </div>
 
-  <div class="row">
-    <div class="col-xs-12">
-      <%= form_tag orders_path do %>
-        <script
-          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-amount="<%= cart_subtotal_cents %>"
-          data-name="Jungle"
-          data-description="Khurram Virani's Jungle Order"
-          data-locale="auto"
-          data-email="kvirani@gmail.com"
-          data-currency="cad">
-        </script>
-      <% end %>
-    </div>
-  </div>
+  <%# how could I use Ternary Operator (?:) %>
 
+
+  <%if enhanced_cart.length>0 %>
+     <%= render 'stripe_checkout' %>
+  <% else %>
+    <div class="alert alert-warning" role="alert">
+       The cart is empty now, <a href="/" class="alert-link">continue back to shopping</a> 
+  </div>
+ <% end %>
 </section>
