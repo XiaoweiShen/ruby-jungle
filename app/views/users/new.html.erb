@@ -1,0 +1,33 @@
+<section class="admin-users-new">
+
+  <header class="page-header">
+    <h1> Signup!</h1>
+  </header>
+
+  <div class="well">
+    <%# <%= link_to 'All Categories', [:admin, :categories ], class: 'btn btn-info' %> 
+  </div>
+ <div class="row">
+    <div class="col-sm-6 col-sm-offset-1">
+      <%= form_for :user, url: '/users' do |form| %>
+        <div class="form-group">
+          <%= form.label :firstname %>
+          <%= form.text_field :firstname, class: 'form-control' %>
+         
+          <%= form.label :lastname %>
+          <%= form.text_field :lastname, class: 'form-control' %>
+          
+          <%= form.label :email %>
+          <%= form.text_field :email, class: 'form-control' %>
+          
+          <%= form.label :password %>
+          <%= form.password_field :password, class: 'form-control' %>
+          <%= form.label :password_confirmation %>
+          <%= form.password_field :password_confirmation, class: 'form-control' %>
+             <%= form.submit 'Submit', class: 'btn btn-primary' %>
+          </div>
+       
+      <% end %>
+    </div>
+  </div>
+</section>
